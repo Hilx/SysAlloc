@@ -21,9 +21,11 @@ You could read my [paper](https://github.com/Hilx/SysAlloc/tree/master/Paper) to
 
 The VHDL implementation of SysAlloc IP core can be found [here](https://github.com/Hilx/Memory-Allocator-IP).
 
+
+
 **Allocator-only source**
 
-The VHDL implementation of memory allocator can be found [here](https://github.com/Hilx/RAM-Buddy-VHDL). This is the allocator only code, which means the communication protocol is not included.
+ The VHDL implementation of memory allocator can be found [here](https://github.com/Hilx/RAM-Buddy-VHDL). This is the allocator only code, which means the communication protocol is not included.
 
 **Allocator Algorithm C model**
 
@@ -32,3 +34,11 @@ The allocator algorithm is firstly modelled in C and the C code can be found [he
 **Synthetic FPGA implemented client**
 
 Source code for the synthetic hardware clients used in testing SysAlloc can be found [here](https://github.com/Hilx/AXI-Peripherals/tree/master/FPGA_Client).
+
+**Software Access**
+
+The example code for accessing SysAlloc from software running on processors can be found [here](https://github.com/Hilx/Memory-Allocator-IP/tree/master/Software%20Access).
+
+**HLS Access**
+
+SysAlloc can also be accessed from HLS, and the example can be found [here](https://github.com/Hilx/HLS-Access-SysAlloc/tree/master/Hardware%20Malloc()%20Development/Attemp%201%20source).
