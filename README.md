@@ -2,7 +2,9 @@
 
 Last updated by Hilda Xue, 26 Aug 2015
 
-If you have any questions, please do not hesitate to contact me by emailing at *zeping.xue10 AT imperial.ac.uk*.
+If you have any questions, please do not hesitate to contact me.
+
+My email address: zeping.xue10 AT imperial.ac.uk.
 
 
 ## Overview ##
