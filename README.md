@@ -9,6 +9,8 @@ My email address: zeping.xue10 AT imperial.ac.uk.
 
 ## Overview ##
 
+SysAlloc is a hardware memory allocator for memory-mapped bus connected heterogeneous systems targeting centred memory. It is scalable in terms of having arbitrary number of active clients in the system; it is also flexible in the range of memory to be managed.
+
 The current SysAlloc is based on the idea of binary[ buddy systems](https://en.wikipedia.org/wiki/Buddy_memory_allocation). The allocator searches for the first-fit memory block. Unlike software-implemented allocators where the memory management is done by repeatedly splitting and coalescing memory blocks, our hardware implemented allocator takes a number of continuous base blocks and allocate. In this way we avoid the splitting and coalescing. Apart from that, instead of searching in a list of memory blocks, we use a tree data structure to search for suitable memory blocks. 
 
 You could read my [paper](https://github.com/Hilx/SysAlloc/tree/master/Paper) to better understand SysAlloc.
