@@ -41,4 +41,4 @@ The example code for accessing SysAlloc from software running on processors can 
 
 **HLS Access**
 
-SysAlloc can also be accessed from HLS, and the example can be found [here](https://github.com/Hilx/HLS-Access-SysAlloc/tree/master/Hardware%20Malloc()%20Development/Attemp%201%20source).
+SysAlloc can also be accessed from HLS, and the example can be found [here](https://github.com/Hilx/SysAlloc-AXI-IP/tree/master/HLS%20Access).
