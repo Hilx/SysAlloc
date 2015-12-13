@@ -391,7 +391,7 @@ BEGIN
       IF state = init_check THEN
         IF init_addr_int = to_integer(unsigned(ParAddr)) THEN  --WORDS_MEM_TOTAL THEN
           state             <= idle;
-          init_finished_bit <= '1';
+          init_finished_bit <= '1'; -- should be a pulse
         END IF;
       END IF;
 
@@ -402,11 +402,11 @@ BEGIN
       IF state = idle THEN
         
         counter_latency <= counter_latency;
-
+		
+		init_finished_bit <= '0'; -- should be a pulse, so placed here
         IF init_start_bit = '1' THEN
           state             <= init0;
-          init_addr_int     <= 0;
-          init_finished_bit <= '0';
+          init_addr_int     <= 0;         
           
         ELSIF start = '1' THEN
           counter_search  <= 0;
