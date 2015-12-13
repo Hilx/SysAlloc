@@ -102,6 +102,7 @@ ARCHITECTURE arch_imp OF SysAlloc_v1_0 IS
       init_start_bit    : OUT std_logic;
       init_finished_bit : IN  std_logic;
       init_range : out integer;
+	  init_done_reset : out std_logic;
 
       S_AXI_ACLK    : IN  std_logic;
       S_AXI_ARESETN : IN  std_logic;
@@ -147,6 +148,7 @@ ARCHITECTURE arch_imp OF SysAlloc_v1_0 IS
 	  init_ddr_start : in std_logic;
 	  init_ddr_finished : out std_logic;
 	  init_ddr_range : in integer;
+	  init_done_reset : in std_logic;
 	  
       --        INIT_AXI_TXN    : in std_logic;
       error         : OUT std_logic;
@@ -286,6 +288,7 @@ ARCHITECTURE arch_imp OF SysAlloc_v1_0 IS
 
   SIGNAL init_start_bit, init_all_done, init_bram_done : std_logic;
   signal init_range : integer;
+  signal init_done_reset : std_logic;
   
 BEGIN
 
@@ -310,6 +313,7 @@ BEGIN
       init_start_bit    => init_start_bit,
       init_finished_bit => init_all_done,
       init_range => init_range,
+	  init_done_reset => init_done_reset,
 
       S_AXI_ACLK    => s00_axi_aclk,
       S_AXI_ARESETN => s00_axi_aresetn,
@@ -354,6 +358,7 @@ BEGIN
 	  init_ddr_start => init_bram_done,
 	  init_ddr_finished => init_all_done,
 	  init_ddr_range => init_range,
+	   init_done_reset => init_done_reset,
 
       --        INIT_AXI_TXN    => m00_axi_init_axi_txn,
       error         => m00_axi_error,

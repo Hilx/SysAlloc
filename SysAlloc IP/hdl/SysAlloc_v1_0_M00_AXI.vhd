@@ -36,6 +36,7 @@ ENTITY SysAlloc_v1_0_M00_AXI IS
 	init_ddr_start : in std_logic;
 	init_ddr_finished : out std_logic;
 	init_ddr_range : in integer;
+	init_done_reset : in std_logic;
 	
     -- User ports ends
     -- Do not modify the ports beyond this line
@@ -610,6 +611,9 @@ BEGIN
 			when init_idle => 
 				if init_ddr_start = '1' then 
 					init_state <= init0;
+				end if;
+				if init_done_reset = '1' then
+					init_ddr_finished <= '0';
 				end if;
 			when init0 => -- set up
 				init_address_int <= 0;

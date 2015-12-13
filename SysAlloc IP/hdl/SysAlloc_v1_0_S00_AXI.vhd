@@ -31,6 +31,7 @@ ENTITY SysAlloc_v1_0_S00_AXI IS
     init_start_bit    : OUT std_logic;
     init_finished_bit : IN  std_logic;
     init_range : out integer;
+	 init_done_reset : out  std_logic;
 
     -- User ports ends
     -- Do not modify the ports beyond this line
@@ -144,6 +145,7 @@ ARCHITECTURE arch_imp OF SysAlloc_v1_0_S00_AXI IS
   -- init 
   SIGNAL init_start    : std_logic_vector(31 DOWNTO 0);
   SIGNAL init_finished : std_logic_vector(31 DOWNTO 0);
+  signal init_done_reset_i : std_logic;
 
 BEGIN
   -- I/O Connections assignments
@@ -421,13 +423,18 @@ BEGIN
   PROCESS(S_AXI_ACLK) IS
     VARIABLE loc_addr : std_logic_vector(OPT_MEM_ADDR_BITS DOWNTO 0);
   BEGIN
+  
+  
+  
     loc_addr := axi_araddr(ADDR_LSB + OPT_MEM_ADDR_BITS DOWNTO ADDR_LSB);
     IF (rising_edge (S_AXI_ACLK)) THEN
       IF (S_AXI_ARESETN = '0') THEN
         axi_rdata <= (OTHERS => '0');
       ELSE
-        
-
+        init_done_reset_i <= '0';
+		if init_done_reset_i = '1' then
+			init_done_reset_i <= '0';
+		end if;
         
         IF (slv_reg_rden = '1') THEN
           -- When there is a valid read address (S_AXI_ARVALID) with 
@@ -459,6 +466,9 @@ BEGIN
           IF loc_addr = b"111" THEN
             axi_rdata(0) <= init_finished_bit;
 			axi_rdata(31 downto 1) <= (others => '0');
+			
+			init_done_reset_i <= '1';
+			
           END IF;
           
           
@@ -484,6 +494,7 @@ BEGIN
   -- User logic ends
     
     init_range <= to_integer(unsigned(slv_reg6));
+	init_done_reset <= init_done_reset_i;
 
 END arch_imp;
 
